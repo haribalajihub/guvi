@@ -2,13 +2,13 @@ import random,time
 database={}
 c=0
 u=0
-print("------------------------WELCOME TO OUR E-BANK---------------------------")
+print("---------------------WELCOME TO OUR E-BANK------------------------")
 time.sleep(1)
 print()
-print("-----------------------by Hari Balaji et Dhina--------------------------")
+print("--------------------by Hari Balaji et Dhina-----------------------")
 time.sleep(1)
 print()
-while True:
+while True:     #HariBalaji module
     SelectUser=input("Create Account(CA)/Admin Login(AL)/User Login(L) :").upper()                                       
     if(SelectUser=="CA"):
         while True:
@@ -24,7 +24,7 @@ while True:
                 try:
                     bal=int(input("please deposit 5000Rs to activate your Account:"))
                     if(bal>=5000):
-                        print("Creating your account please wait")
+                        print("Creating your account please wait")                                                    
                         time.sleep(2)
                         print("Your account created successfully")
                         time.sleep(1)
@@ -52,10 +52,10 @@ while True:
                 except ValueError:
                     print("Deposit Should be numerical")
                 if(c==1):
-                    breakpoint
+                    break
             if(c==1):
                 break
-    elif(SelectUser=="L"):
+    elif(SelectUser=="L"):      #dhina module
         while True:
             try:
                 acc=int(input("Enter your Account number:"))
@@ -66,7 +66,7 @@ while True:
                         while True:
                             y=database[acc]
                             if(y[1]==username and y[2]==passw):
-                                choice=input("Enter your choice(Deposit(D),Withdraw(W),Balance(B) :").upper()
+                                choice=input("Enter your choice(Deposit(D),Withdraw(W),Balance(B) :").upper()       
                                 if(choice=="D"):
                                     deposit=int(input("How much do you like to deposit :"))
                                     y[3]=y[3]+deposit
@@ -136,7 +136,7 @@ while True:
                     break
             except ValueError:
                 print("Enter valid Account number...")
-    elif(SelectUser=='AL'):
+    elif(SelectUser=='AL'):         #HariBalaji module
         import time
         while True:
             ap=input("Password:")
@@ -163,7 +163,7 @@ while True:
                                     print("Balance             :",i[3])
                                     cnt=cnt+1
                                 if(cnt==5):
-                                    print("Creation of Account :",i[4],i[5])
+                                    print("Creation of Account :",i[4],i[5])                        
                                     cnt=1
                                 
                                 print("-------------------------------------------------")
@@ -246,3 +246,4 @@ while True:
                     
     else:
         print("please choose the given criteria....")
+        
