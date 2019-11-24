@@ -69,25 +69,12 @@ while True:     #HariBalaji module
                             if(y[1]==username and y[2]==passw):
                                 choice=input("Enter your choice(Deposit(D),Withdraw(W),Balance(B) :").upper()       
                                 if(choice=="D"):
-                                    deposit=int(input("How much do you like to deposit :"))
-                                    y[3]=y[3]+deposit
-                                    print("please wait...")
-                                    time.sleep(1)
-                                    print(deposit,"rs credited in your Account...your balance is  :",y[3])
-                                    time.sleep(1)
-                                    ce=input("Do you like to continue(C) or exit(E):").upper()
-                                    if(ce=="E"):
-                                        c=0
-                                        break
-                                    else:
-                                        continue
-                                if(choice=="W"):
-                                    withdraw=int(input("How much do you like to withdraw :"))
-                                    y[3]=y[3]-withdraw
-                                    print("please wait...")
-                                    time.sleep(1)
-                                    if(y[3]>=5000):
-                                        print(withdraw,"rs debited in your Account...your balance is  :",y[3])
+                                    try:
+                                        deposit=int(input("How much do you like to deposit :"))
+                                        y[3]=y[3]+deposit
+                                        print("please wait...")
+                                        time.sleep(1)
+                                        print(deposit,"rs credited in your Account...your balance is  :",y[3])
                                         time.sleep(1)
                                         ce=input("Do you like to continue(C) or exit(E):").upper()
                                         if(ce=="E"):
@@ -95,11 +82,32 @@ while True:     #HariBalaji module
                                             break
                                         else:
                                             continue
-                                    else:
-                                        print("minimum balance should be atleast 5000rs")
-                                        print("please try again")
-                                        y[3]=y[3]+withdraw
-                                        continue 
+                                    except ValueError:
+                                        print("Deposit Should be numerical")
+                                    if(c==0):
+                                        break
+                                if(choice=="W"):
+                                    try:
+                                        withdraw=int(input("How much do you like to withdraw :"))
+                                        y[3]=y[3]-withdraw
+                                        print("please wait...")
+                                        time.sleep(1)
+                                        if(y[3]>=5000):
+                                            print(withdraw,"rs debited in your Account...your balance is  :",y[3])
+                                            time.sleep(1)
+                                            ce=input("Do you like to continue(C) or exit(E):").upper()
+                                            if(ce=="E"):
+                                                c=0
+                                                break
+                                            else:
+                                                continue
+                                        else:
+                                            print("minimum balance should be atleast 5000rs")
+                                            print("please try again")
+                                            y[3]=y[3]+withdraw
+                                            continue
+                                    except ValueError:
+                                        print("Deposit Should be numerical")
                                     if(c==0):
                                         break
                                 if(choice=="B"):
