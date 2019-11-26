@@ -9,6 +9,7 @@ passdb={}
 c=0
 u=0
 color.write("WELCOME TO OUR H&D E-BANK".center(70,"-"),"COMMENT")
+print()
 time.sleep(1)
 print()
 print("by Hari Balaji et Dhina".center(86,"-"))
@@ -50,10 +51,16 @@ while True:     #HariBalaji module
                         l.append(date)
                         l.append(time)
                         database[x]=l
+                        import datetime
+                        xdatetime=datetime.datetime.now()
+                        date=xdatetime.strftime("%d %B %y")
+                        time=xdatetime.strftime("%I:%M:%S %p")
                         op.append(x)
                         op.append("deposit  ")
                         op.append(bal)
                         op.append(bal)
+                        op.append(date)
+                        op.append(time)
                         passdb[x]=op
                         c=1
                         break
@@ -80,6 +87,7 @@ while True:     #HariBalaji module
                         passw=input("Enter your password :")
                         while True:
                             y=database[acc]
+                            import time
                             if(y[1]==username and y[2]==passw):
                                 choice=input("Enter your choice(Deposit(D),Withdraw(W),Balance(B),Passbook(P) ,DeleteAccount(DA):").upper()       
                                 if(choice=="D"):
@@ -90,9 +98,15 @@ while True:     #HariBalaji module
                                         time.sleep(1)
                                         print(deposit,"rs credited in your Account...your balance is  :",y[3])
                                         time.sleep(1)
+                                        import datetime
+                                        xdatetime=datetime.datetime.now()
+                                        date=xdatetime.strftime("%d %B %y")
+                                        time=xdatetime.strftime("%I:%M:%S %p")
                                         p.append("deposit  ")
                                         p.append(deposit)
                                         p.append(y[3])
+                                        p.append(date)
+                                        p.append(time)
                                         passdb[acc]=p
                                         ce=input("Do you like to continue(C) or exit(E):").upper()
                                         
@@ -106,6 +120,7 @@ while True:     #HariBalaji module
                                     if(c==0):
                                         break
                                 if(choice=="W"):
+                                    import time
                                     try:
                                         withdraw=int(input("How much do you like to withdraw :"))
                                         y[3]=y[3]-withdraw
@@ -114,9 +129,15 @@ while True:     #HariBalaji module
                                         if(y[3]>=5000):
                                             print(withdraw,"rs debited in your Account...your balance is  :",y[3])
                                             time.sleep(1)
+                                            import datetime
+                                            xdatetime=datetime.datetime.now()
+                                            date=xdatetime.strftime("%d %B %y")
+                                            time=xdatetime.strftime("%I:%M:%S %p")
                                             p.append("withdraw")
                                             p.append(withdraw)
                                             p.append(y[3])
+                                            p.append(date)
+                                            p.append(time)
                                             passdb[acc]=p
                                             ce=input("Do you like to continue(C) or exit(E):").upper()
                                             if(ce=="E"):
@@ -149,10 +170,10 @@ while True:     #HariBalaji module
                                     print("Please wait...")
                                     ui=passdb[acc]
                                     co=0
-                                    color.write("No\tTransaction\tC_or_D\t\tBalanace\n","COMMENT")
-                                    for i in range(1,len(ui),3):
+                                    color.write("No\tTransaction\tC_or_D\t\tBalance\t          Date\t     Time\n","COMMENT")
+                                    for i in range(1,len(ui),5):
                                         co=co+1
-                                        print(co,"\t",ui[i],"\t",ui[i+1],"\t\t",ui[i+2])
+                                        print(co,"\t",ui[i],"\t",ui[i+1],"\t\t",ui[i+2],"\t",ui[i+3],"\t",ui[i+4])
                                 if(choice=="DA"):
                                     time.sleep(1)
                                     print("please wait...")
