@@ -1,0 +1,9 @@
+l=list(map(int,input().split()))
+leng=len(l)/2
+le=int(leng)
+y=l[:le]
+u=l[le:]
+y,u.sort()
+z=y+u
+z.sort()
+print(z)
